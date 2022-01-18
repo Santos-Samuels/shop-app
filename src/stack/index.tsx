@@ -1,12 +1,13 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { HomeScreen } from '@src/screens';
+import { ProductsOverview, Product } from '@src/screens';
 import colors from '@src/shared/GlobalStyles/colors';
 
-// type RootStackParamList = {
-//   Home: undefined;
-// }
+export type RootStackParamList = {
+  ProductsOverview: undefined;
+  Product: {productId: string};
+}
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const RootStack: React.FC = () => {
   
@@ -18,9 +19,11 @@ const RootStack: React.FC = () => {
       headerTintColor: '#fff',
       headerTitleStyle: {
         fontWeight: 'bold',
+        fontFamily: 'PT Sans'
       },
     }}>
-      <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="ProductsOverview" options={{title: 'All Products'}} component={ProductsOverview} />
+      <Stack.Screen name="Product" component={Product} />
     </Stack.Navigator>
   )
 }

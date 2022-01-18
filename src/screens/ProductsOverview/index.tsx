@@ -3,7 +3,7 @@ import { FlatList } from 'react-native';
 import { useSelector } from 'react-redux';
 import { ProductItem } from '@src/components'
 
-const HomeScreen: React.FC = () => {
+const ProductsOverview: React.FC = () => {
   const products = useSelector((state: RootState) => state.products);
 
   return (
@@ -15,4 +15,4 @@ const HomeScreen: React.FC = () => {
   );
 };
 
-export default HomeScreen;
+export default ProductsOverview;

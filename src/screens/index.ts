@@ -1,5 +1,7 @@
-import HomeScreen from "./HomeScreen";
+import Product from "./Product";
+import ProductsOverview from "./ProductsOverview";
 
 export {
-  HomeScreen
+  ProductsOverview,
+  Product
 }

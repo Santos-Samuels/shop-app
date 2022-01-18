@@ -7,24 +7,41 @@ import {
   ProductDetails,
 } from "./style";
 import { IProduct } from "@src/shared/interfaces";
-import { Button } from "react-native";
+import { Button, TouchableOpacity } from "react-native";
 import colors from "@src/shared/GlobalStyles/colors";
+import { RootStackParamList } from "@src/stack";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { useNavigation } from "@react-navigation/native";
+
+type ProductScreenProp = StackNavigationProp<RootStackParamList, "Product">;
 
 const ProductItem: React.FC<{ product: IProduct }> = (props) => {
+  const navigation = useNavigation<ProductScreenProp>();
+
+  const ProductNavigationHandler = () => {
+    navigation.navigate("Product", { productId: props.product.id })
+  }
+
   return (
-    <ProductContainer>
-      <ProductImage source={{ uri: props.product.imageUrl }} />
+    <TouchableOpacity onPress={ProductNavigationHandler}>
+      <ProductContainer>
+        <ProductImage source={{ uri: props.product.imageUrl }} />
 
-      <ProductDetails>
-        <ProductTitle>{props.product.title}</ProductTitle>
-        <ProductPrice>Price</ProductPrice>
-      </ProductDetails>
+        <ProductDetails>
+          <ProductTitle>{props.product.title}</ProductTitle>
+          <ProductPrice>{props.product.price.toFixed(2)}</ProductPrice>
+        </ProductDetails>
 
-      <ProductActions>
-        <Button color={colors.primary} title="View Details" onPress={() => {}} />
-        <Button color={colors.primary} title="To Cart" onPress={() => {}} />
-      </ProductActions>
-    </ProductContainer>
+        <ProductActions>
+          <Button
+            color={colors.primary}
+            title="View Details"
+            onPress={ProductNavigationHandler}
+          />
+          <Button color={colors.primary} title="To Cart" onPress={() => {}} />
+        </ProductActions>
+      </ProductContainer>
+    </TouchableOpacity>
   );
 };
 

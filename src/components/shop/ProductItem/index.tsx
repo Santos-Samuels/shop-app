@@ -15,11 +15,11 @@ import { useNavigation } from "@react-navigation/native";
 
 type ProductScreenProp = StackNavigationProp<RootStackParamList, "Product">;
 
-const ProductItem: React.FC<{ product: IProduct }> = (props) => {
+const ProductItem: React.FC<{ product: IProduct, onAddToCart: (product: IProduct) => void }> = (props) => {
   const navigation = useNavigation<ProductScreenProp>();
 
   const ProductNavigationHandler = () => {
-    navigation.navigate("Product", { productId: props.product.id })
+    navigation.navigate("Product", { productId: props.product.id, onAddToCart: props.onAddToCart })
   }
 
   return (
@@ -38,7 +38,7 @@ const ProductItem: React.FC<{ product: IProduct }> = (props) => {
             title="View Details"
             onPress={ProductNavigationHandler}
           />
-          <Button color={colors.primary} title="To Cart" onPress={() => {}} />
+          <Button color={colors.primary} title="To Cart" onPress={() => props.onAddToCart(props.product)} />
         </ProductActions>
       </ProductContainer>
     </TouchableOpacity>

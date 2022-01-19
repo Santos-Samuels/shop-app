@@ -4,9 +4,10 @@ export const ADD_CART = 'ADD_CART'
 export const REMOVE_CART = 'REMOVE_CART'
 export const CLEAR_CART = 'CLEAR_CART'
 
-// export interface CartState {
-//   data: ICartItem[];
-// }
+export interface CartState {
+  items: ICartItem[]
+  totalAmount: number;
+}
 
 type AddCartAction = {
   type: typeof ADD_CART;

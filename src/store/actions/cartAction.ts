@@ -1,26 +1,19 @@
 import { Dispatch } from "redux";
 import { ADD_CART, CartActionTypes, REMOVE_CART } from "../types/CartTypes";
-import { ICartItem } from "@src/shared/interfaces";
+import { ICartItem, IProduct } from "@src/shared/interfaces";
 
 export const addToCart = (
   dispatch: Dispatch<CartActionTypes>,
-  newItem: ICartItem,
-  data: ICartItem[]
+  newProduct: IProduct
 ) => {
-  if (data.some((item) => item.productId === newItem.productId)) {
-    const updatedItem = data.filter((item) => {
-      if (item.productId === newItem.productId)
-        return {
-          ...item,
-          quantity: item.quantity + 1,
-          sum: item.sum + item.productPrice,
-        };
-
-      return
-    });
-    
-    dispatch({ type: ADD_CART, payload: updatedItem[0] });
-    return;
+  const newItem: ICartItem = {
+    id: Date.now(),
+    imageUrl: newProduct.imageUrl,
+    productId: newProduct.id,
+    price: newProduct.price,
+    title: newProduct.title,
+    quantity: 1,
+    sum: newProduct.price,
   }
 
   dispatch({ type: ADD_CART, payload: newItem });
@@ -31,6 +24,6 @@ export const removeFromCart = (
   productId: string,
   data: ICartItem[]
 ) => {
-  const updatedCart = data.filter((prod) => prod.id !== productId);
+  const updatedCart = data.filter((item) => item.productId !== productId);
   dispatch({ type: REMOVE_CART, payload: updatedCart });
 };

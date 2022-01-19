@@ -5,14 +5,13 @@ import { useRoute, RouteProp, useNavigation} from "@react-navigation/native";
 import { useSelector } from 'react-redux';
 import { RootState } from '@src/store';
 import React, { useEffect } from 'react';
-import { ProductItem } from '@src/components';
-import { ProductDetails, ProductImage, ProductPrice, ProductTitle } from '@src/components/shop/ProductItem/style';
+import { ProductDetails } from '@src/components/shop/ProductItem/style';
 import colors from '@src/shared/GlobalStyles/colors';
 
 type ProductScreenRouteProp = RouteProp<RootStackParamList, 'Product'>;
 type ProductScreenProp = StackNavigationProp<RootStackParamList, 'Product'>;
 
-const Product: React.FC = (props) => {
+const ProductScreen: React.FC = (props) => {
   const navigation = useNavigation<ProductScreenProp>();
   const route = useRoute<ProductScreenRouteProp>();
   const productId = route.params.productId
@@ -27,7 +26,7 @@ const Product: React.FC = (props) => {
       <Image style={{width: '100%', height: 300}} source={{ uri: selectedProduct.imageUrl }} />
       
       <View style={{marginVertical: 10}}>
-        <Button title='Add to Cart' color={colors.primary} onPress={() => {}} />
+        <Button title='Add to Cart' color={colors.primary} onPress={() =>  route.params.onAddToCart(selectedProduct)} />
       </View>
       
       <ProductDetails>
@@ -38,4 +37,4 @@ const Product: React.FC = (props) => {
   );
 };
 
-export default Product;
+export default ProductScreen;

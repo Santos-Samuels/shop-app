@@ -1,9 +1,9 @@
 import CartScreen from "./CartScreen";
 import ProductScreen from "./ProductScreen";
-import ProductsOverview from "./ProductsOverview";
+import ProductsOverviewScreen from "./ProductsOverviewScreen";
 
 export {
-  ProductsOverview,
+  ProductsOverviewScreen,
   ProductScreen,
   CartScreen
 }

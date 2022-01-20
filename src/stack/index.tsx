@@ -1,20 +1,21 @@
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { ProductsOverview, ProductScreen, CartScreen } from '@src/screens';
+// import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { ProductsOverviewScreen, ProductScreen, CartScreen } from '@src/screens';
 import colors from '@src/shared/GlobalStyles/colors';
 import { IProduct } from '@src/shared/interfaces';
 
 export type RootStackParamList = {
-  ProductsOverview: undefined;
-  Product: {productId: string, onAddToCart: (product: IProduct) => void};
-  Cart: undefined
+  ProductsOverviewScreen: undefined;
+  ProductScreen: {productId: string, onAddToCart: (product: IProduct) => void};
+  CartScreen: undefined
 }
 
-const Stack = createNativeStackNavigator<RootStackParamList>();
+const Drawer = createDrawerNavigator<RootStackParamList>();
 
 const RootStack: React.FC = () => {
   
   return (
-    <Stack.Navigator screenOptions={{
+    <Drawer.Navigator screenOptions={{
       headerStyle: {
         backgroundColor: colors.primary,
       },
@@ -23,10 +24,10 @@ const RootStack: React.FC = () => {
         fontWeight: 'bold'
       },
     }}>
-      <Stack.Screen name="ProductsOverview" options={{title: 'All Products'}} component={ProductsOverview} />
-      <Stack.Screen name="Product" component={ProductScreen} />
-      <Stack.Screen name="Cart" component={CartScreen} />
-    </Stack.Navigator>
+      <Drawer.Screen name="ProductsOverviewScreen" options={{title: 'All Products'}} component={ProductsOverviewScreen} />
+      <Drawer.Screen name="ProductScreen" component={ProductScreen} options={{drawerItemStyle: {display: 'none'}}} />
+      <Drawer.Screen name="CartScreen" options={{title: 'Cart'}} component={CartScreen} />
+    </Drawer.Navigator>
   )
 }
 

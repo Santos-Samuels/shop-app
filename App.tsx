@@ -3,6 +3,7 @@ import RootStack from '@src/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { Provider } from 'react-redux';
 import { store } from '@src/store';
+import 'react-native-gesture-handler';
 // import AppLoading from 'expo-app-loading';
 // import {
 //   useFonts,

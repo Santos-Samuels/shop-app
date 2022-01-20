@@ -8,8 +8,8 @@ import React, { useEffect } from 'react';
 import { ProductDetails } from '@src/components/shop/ProductItem/style';
 import colors from '@src/shared/GlobalStyles/colors';
 
-type ProductScreenRouteProp = RouteProp<RootStackParamList, 'Product'>;
-type ProductScreenProp = StackNavigationProp<RootStackParamList, 'Product'>;
+type ProductScreenRouteProp = RouteProp<RootStackParamList, 'ProductScreen'>;
+type ProductScreenProp = StackNavigationProp<RootStackParamList, 'ProductScreen'>;
 
 const ProductScreen: React.FC = (props) => {
   const navigation = useNavigation<ProductScreenProp>();

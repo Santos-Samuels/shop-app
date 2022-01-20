@@ -13,13 +13,13 @@ import { RootStackParamList } from "@src/stack";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { useNavigation } from "@react-navigation/native";
 
-type ProductScreenProp = StackNavigationProp<RootStackParamList, "Product">;
+type ProductScreenProp = StackNavigationProp<RootStackParamList, "ProductScreen">;
 
 const ProductItem: React.FC<{ product: IProduct, onAddToCart: (product: IProduct) => void }> = (props) => {
   const navigation = useNavigation<ProductScreenProp>();
 
   const ProductNavigationHandler = () => {
-    navigation.navigate("Product", { productId: props.product.id, onAddToCart: props.onAddToCart })
+    navigation.navigate("ProductScreen", { productId: props.product.id, onAddToCart: props.onAddToCart })
   }
 
   return (

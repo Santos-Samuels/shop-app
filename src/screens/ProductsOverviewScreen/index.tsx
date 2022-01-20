@@ -5,18 +5,17 @@ import { ProductItem, CustomHeaderButton } from "@src/components";
 import { addToCart } from "@src/store/actions/cartAction";
 import { IProduct } from "@src/shared/interfaces";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
-import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
 import { RootStackParamList } from "@src/stack";
 import { StackNavigationProp } from "@react-navigation/stack";
 import React from "react";
 
-type ProductScreenProp = StackNavigationProp<RootStackParamList, 'Cart'>;
+type ProductsOverviewScreenProp = StackNavigationProp<RootStackParamList, 'CartScreen'>;
 
-const ProductsOverview: React.FC = () => {
-  const { products, cart } = useSelector((states: RootState) => states);
+const ProductsOverviewScreen: React.FC = () => {
+  const products = useSelector((state: RootState) => state.products);
   const dispatch = useDispatch();
-  const navigation = useNavigation<ProductScreenProp>();
+  const navigation = useNavigation<ProductsOverviewScreenProp>();
 
   const onAddToCart = (product: IProduct) => {
     addToCart(dispatch, product);
@@ -29,7 +28,7 @@ const ProductsOverview: React.FC = () => {
         <Item
           title="Cart"
           iconName="cart"
-          onPress={() => navigation.navigate("Cart")}
+          onPress={() => navigation.navigate("CartScreen")}
         />
     </HeaderButtons> 
     )})
@@ -46,4 +45,4 @@ const ProductsOverview: React.FC = () => {
   );
 };
 
-export default ProductsOverview;
+export default ProductsOverviewScreen;

@@ -20,8 +20,7 @@ const RootStack: React.FC = () => {
       },
       headerTintColor: '#fff',
       headerTitleStyle: {
-        fontWeight: 'bold',
-        fontFamily: 'PT Sans'
+        fontWeight: 'bold'
       },
     }}>
       <Stack.Screen name="ProductsOverview" options={{title: 'All Products'}} component={ProductsOverview} />

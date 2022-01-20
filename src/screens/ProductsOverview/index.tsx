@@ -28,7 +28,7 @@ const ProductsOverview: React.FC = () => {
       <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
         <Item
           title="Cart"
-          iconName="ios-search"
+          iconName="cart"
           onPress={() => navigation.navigate("Cart")}
         />
     </HeaderButtons> 

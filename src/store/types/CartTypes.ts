@@ -16,7 +16,7 @@ type AddCartAction = {
 
 type RemoveCartAction = {
   type: typeof REMOVE_CART;
-  payload: ICartItem[];
+  payload: CartState;
 };
 
 type ClearCartAction = {

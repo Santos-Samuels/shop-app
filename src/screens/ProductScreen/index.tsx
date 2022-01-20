@@ -22,7 +22,7 @@ const ProductScreen: React.FC = (props) => {
  }, [])
 
   return (
-    <ScrollView>
+    <ScrollView style={{margin: 20}}>
       <Image style={{width: '100%', height: 300}} source={{ uri: selectedProduct.imageUrl }} />
       
       <View style={{marginVertical: 10}}>
